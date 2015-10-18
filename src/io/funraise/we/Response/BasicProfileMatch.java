@@ -3,10 +3,10 @@ package io.funraise.we.Response;
 import java.util.List;
 
 public class BasicProfileMatch {
-	
+    
     public static class Identity {
         
-    	public static class Gender {
+        public static class Gender {
             public String value;
             public String text;
         }
@@ -32,7 +32,7 @@ public class BasicProfileMatch {
 
         }
 
-		
+        
         public static class Income {
             public int min;
             public int max;
@@ -47,7 +47,7 @@ public class BasicProfileMatch {
         public boolean accredited_investor;   
     }
 
-	
+    
     public static class Giving 
     {
         public static class P2G {
@@ -57,7 +57,7 @@ public class BasicProfileMatch {
 
         public static class GiftCapacity {
            
-        	public int min;
+            public int min;
             public int max;
             public int value;
             public String text;
@@ -65,7 +65,7 @@ public class BasicProfileMatch {
             public String text_high;
         }
 
-		
+        
         public static class EstimatedAnnualDonations {
             public int min;
             public int max;
@@ -81,7 +81,7 @@ public class BasicProfileMatch {
 
     }
 
-	
+    
     public static class Address {
 
         public static class State {
@@ -98,7 +98,7 @@ public class BasicProfileMatch {
 
     }
 
-	
+    
     public static class RealEstate {
 
         public static class TotalValue {
