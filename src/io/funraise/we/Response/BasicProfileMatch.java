@@ -51,7 +51,7 @@ public class BasicProfileMatch {
     public static class Giving 
     {
         public static class P2G {
-            public String value;
+            public int value;
             public String text;
         }
 
