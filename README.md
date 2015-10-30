@@ -1,11 +1,14 @@
+# Wealth Engine Java SDK
+
 A Java based wrapper for the Wealth Engine API: https://dev.wealthengine.com/api
 
-DEPENDENCIES:
+## DEPENDENCIES
 
  + Apache HTTPClient
  + Jackson Core, Databind and Annotations
   
- BASIC USE:
+
+```java
  
     try {
  
@@ -21,3 +24,5 @@ DEPENDENCIES:
         int p2gscore = bm.profileMatch.giving.p2g_score.value;
    }
    catch(ApiRequest.MalformedRequestException | ExecutionException | InterruptedException e) {e.printStackTrace();}
+
+```
