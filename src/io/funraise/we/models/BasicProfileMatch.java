@@ -30,7 +30,7 @@ public class BasicProfileMatch extends ProfileMatch {
 
     public static class Giving {
         
-    	public static class P2G {
+        public static class P2G {
             public int value;
             public String text;
         }
@@ -60,7 +60,7 @@ public class BasicProfileMatch extends ProfileMatch {
     }
     
     public static class Locations {
-    	public Address address;
+        public Address address;
     }
 
     public static class RealEstate {

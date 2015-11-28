@@ -10,6 +10,6 @@ public abstract class MatchRequest extends ApiRequest {
     }
     
     protected boolean notEmpty(String v) {
-    	return v != null && !v.isEmpty();
+        return v != null && !v.isEmpty();
     }
 }

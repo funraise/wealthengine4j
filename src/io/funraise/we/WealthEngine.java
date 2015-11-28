@@ -76,7 +76,7 @@ public class WealthEngine {
      * @param size
      */
     public void setThreadPoolSize(int size) {
-    	_numThreads = size;
+        _numThreads = size;
     }
     
     /**
@@ -86,7 +86,7 @@ public class WealthEngine {
      * @returns the number of threads the ExecutorService is using to process API requests
      */
     public int getThreadPoolSize() {
-    	return _numThreads;
+        return _numThreads;
     }
     
     /**
@@ -101,7 +101,7 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getBasicProfileByEmail(EmailMatchRequest request) throws MalformedRequestException {
-    	return getProfile(request,"profile/find_one/by_email/basic","BasicProfileMatch");
+        return getProfile(request,"profile/find_one/by_email/basic","BasicProfileMatch");
     }
     
     /**
@@ -116,7 +116,7 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getBasicProfileByPhone(PhoneMatchRequest request) throws MalformedRequestException {
-    	return getProfile(request,"profile/find_one/by_phone/basic","BasicProfileMatch");
+        return getProfile(request,"profile/find_one/by_phone/basic","BasicProfileMatch");
     }
     
     /**
@@ -131,7 +131,7 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getBasicProfileByAddress(AddressMatchRequest request) throws MalformedRequestException {
-    	return getProfile(request,"profile/find_one/by_address/basic","BasicProfileMatch");
+        return getProfile(request,"profile/find_one/by_address/basic","BasicProfileMatch");
     }
     
     /**
@@ -146,7 +146,7 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getFullProfileByAddress(AddressMatchRequest request) throws MalformedRequestException {
-    	return getProfile(request,"profile/find_one/by_address/full","FullProfileMatch");
+        return getProfile(request,"profile/find_one/by_address/full","FullProfileMatch");
     }
     
     //Does most of the work
