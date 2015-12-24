@@ -1,4 +1,4 @@
-package io.funraise.we.Request;
+package io.funraise.models;
 
 public class ApiRequest {
      public static class MalformedRequestException extends Exception {

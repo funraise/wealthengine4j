@@ -1,4 +1,4 @@
-package io.funraise.we.Response;
+package io.funraise.models;
 
 public class ApiResponse {
     public int statusCode;

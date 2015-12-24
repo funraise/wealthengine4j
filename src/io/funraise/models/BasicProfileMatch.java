@@ -1,4 +1,4 @@
-package io.funraise.we.models;
+package io.funraise.models;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class BasicProfileMatch extends ProfileMatch {
     public static class Giving {
         
         public static class P2G {
-            public int value;
+            public String value;
             public String text;
         }
 

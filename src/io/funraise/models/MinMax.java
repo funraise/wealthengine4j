@@ -1,4 +1,4 @@
-package io.funraise.we.models;
+package io.funraise.models;
 
 public class MinMax {
      public int min;

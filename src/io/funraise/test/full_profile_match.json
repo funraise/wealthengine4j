@@ -1,0 +1,18 @@
+{
+   "demographics":{
+      "has_children":false
+   },
+   "identity":{
+      "first_name":"BILL",
+      "full_name":"BILL GATES",
+      "gender":{
+         "text":"Male",
+         "value":"M"
+      },
+      "last_name":"GATES",
+      "middle_name":"MOCK"
+   },
+   "realestate":{
+      "total_num_properties":1
+   }
+}

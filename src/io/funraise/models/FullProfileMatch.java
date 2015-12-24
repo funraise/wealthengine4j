@@ -1,4 +1,4 @@
-package io.funraise.we.models;
+package io.funraise.models;
 
 import java.util.List;
 

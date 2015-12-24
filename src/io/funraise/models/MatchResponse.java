@@ -1,6 +1,4 @@
-package io.funraise.we.Response;
-
-import io.funraise.we.models.ProfileMatch;
+package io.funraise.models;
 
 public class MatchResponse extends ApiResponse {
     public ProfileMatch profileMatch;

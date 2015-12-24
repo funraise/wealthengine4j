@@ -1,4 +1,4 @@
-package io.funraise.we;
+package io.funraise.api;
 
 import java.io.IOException;
 import java.util.concurrent.Callable;
@@ -14,14 +14,15 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.funraise.we.Request.AddressMatchRequest;
-import io.funraise.we.Request.ApiRequest;
-import io.funraise.we.Request.ApiRequest.MalformedRequestException;
-import io.funraise.we.Request.EmailMatchRequest;
-import io.funraise.we.Request.MatchRequest;
-import io.funraise.we.Request.PhoneMatchRequest;
-import io.funraise.we.Response.MatchResponse;
-import io.funraise.we.models.ProfileMatch;
+
+import io.funraise.models.AddressMatchRequest;
+import io.funraise.models.ApiRequest;
+import io.funraise.models.EmailMatchRequest;
+import io.funraise.models.MatchRequest;
+import io.funraise.models.MatchResponse;
+import io.funraise.models.PhoneMatchRequest;
+import io.funraise.models.ProfileMatch;
+import io.funraise.models.ApiRequest.MalformedRequestException;
 
 
 /**
@@ -38,6 +39,8 @@ public class WealthEngine {
     public static final String PROD_URL = "https://api.wealthengine.com/v1/";
     public static final String SANDBOX_URL = "https://api-sandbox.wealthengine.com/v1/";
     
+    private static CloseableHttpClient httpclient;
+    
     private final String _apiKey;
     private final String _apiRoot;
     private int _numThreads = 1;
@@ -50,8 +53,7 @@ public class WealthEngine {
      * @param apiKey
      */
     public WealthEngine(String apiKey) {
-        _apiKey = apiKey;
-        _apiRoot = PROD_URL;  
+        this(apiKey,PROD_URL);
     }
     
     /**
@@ -65,7 +67,12 @@ public class WealthEngine {
      */
     public WealthEngine(String apiKey, String environmentUrl) {
         _apiKey = apiKey;
-        _apiRoot = environmentUrl;  
+        _apiRoot = environmentUrl; 
+        httpclient = HttpClients.createDefault();
+    }
+    
+    public void setClient(CloseableHttpClient client) {
+        httpclient = client;
     }
     
     /**
@@ -101,7 +108,7 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getBasicProfileByEmail(EmailMatchRequest request) throws MalformedRequestException {
-        return getProfile(request,"profile/find_one/by_email/basic","BasicProfileMatch");
+        return getProfile(request,"profile/find_one/by_email/basic","io.funraise.models.BasicProfileMatch");
     }
     
     /**
@@ -116,7 +123,7 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getBasicProfileByPhone(PhoneMatchRequest request) throws MalformedRequestException {
-        return getProfile(request,"profile/find_one/by_phone/basic","BasicProfileMatch");
+        return getProfile(request,"profile/find_one/by_phone/basic","io.funraise.models.BasicProfileMatch");
     }
     
     /**
@@ -131,7 +138,7 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getBasicProfileByAddress(AddressMatchRequest request) throws MalformedRequestException {
-        return getProfile(request,"profile/find_one/by_address/basic","BasicProfileMatch");
+        return getProfile(request,"profile/find_one/by_address/basic","io.funraise.models.BasicProfileMatch");
     }
     
     /**
@@ -146,8 +153,39 @@ public class WealthEngine {
      * @return Future<MatchResponse>
      */
     public Future<MatchResponse> getFullProfileByAddress(AddressMatchRequest request) throws MalformedRequestException {
-        return getProfile(request,"profile/find_one/by_address/full","FullProfileMatch");
+        return getProfile(request,"profile/find_one/by_address/full","io.funraise.models.FullProfileMatch");
     }
+    
+    /**
+     * <P>Calling this method with an PhoneMatchRequest object tries to return a FullProfileMatch by first name, last name + phone
+     * 
+     * <P>A Future<MatchResponse> is returned immediately to the caller which can be redeemed later. Contained 
+     * within the MatchResponse is a ProfileMatch object which can be cast to a BasicProfileMatch or FullProfileMatch
+     * depending on if you call getBasic* or getFull* methods
+     * 
+     * @throws ApiRequest.MalformedRequestException if the request is missing required fields or the fields are invalid
+     * @param request
+     * @return Future<MatchResponse>
+     */
+    public Future<MatchResponse> getFullProfileByPhone(PhoneMatchRequest request) throws MalformedRequestException {
+        return getProfile(request,"profile/find_one/by_phone/full","io.funraise.models.FullProfileMatch");
+    }
+    
+    /**
+     * <P>Calling this method with an EmailMatchRequest object tries to return a FullProfileMatch by first name, last name + email
+     * 
+     * <P>A Future<MatchResponse> is returned immediately to the caller which can be redeemed later. Contained 
+     * within the MatchResponse is a ProfileMatch object which can be cast to a BasicProfileMatch or FullProfileMatch
+     * depending on if you call getBasic* or getFull* methods
+     * 
+     * @throws ApiRequest.MalformedRequestException if the request is missing required fields or the fields are invalid
+     * @param request
+     * @return Future<MatchResponse>
+     */
+    public Future<MatchResponse> getFullProfileByEmail(EmailMatchRequest request) throws MalformedRequestException {
+        return getProfile(request,"profile/find_one/by_email/full","io.funraise.models.FullProfileMatch");
+    }
+    
     
     //Does most of the work
     private Future<MatchResponse> getProfile(MatchRequest request, final String endpoint, String matchTypeImpl) throws MalformedRequestException {
@@ -157,7 +195,6 @@ public class WealthEngine {
         ExecutorService executor = Executors.newFixedThreadPool(_numThreads);
         Callable<MatchResponse> task = () -> {
             
-            CloseableHttpClient httpclient = HttpClients.createDefault();
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             final HttpPost httprequest = new HttpPost(_apiRoot + endpoint);
@@ -167,9 +204,10 @@ public class WealthEngine {
 
             try {
                 httprequest.setEntity(new StringEntity(mapper.writeValueAsString(request)));
+                                
                 HttpResponse response = httpclient.execute(httprequest);
                 matchResponse.statusCode = response.getStatusLine().getStatusCode();
-                matchResponse.rawContent = EntityUtils.toString(response.getEntity());
+                matchResponse.rawContent = EntityUtils.toString(response.getEntity());          
                 matchResponse.profileMatch = (ProfileMatch) mapper.readValue(matchResponse.rawContent, Class.forName(matchTypeImpl));
             
             } catch (IOException | ParseException e) {
@@ -182,7 +220,6 @@ public class WealthEngine {
                 }
             } 
             return matchResponse;
-        
         };
         return executor.submit(task);
     }
