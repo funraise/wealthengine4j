@@ -38,20 +38,22 @@ public class WealthEngine {
 
     public static final String PROD_URL = "https://api.wealthengine.com/v1/";
     public static final String SANDBOX_URL = "https://api-sandbox.wealthengine.com/v1/";
+    public static final int DEFAULT_THREADS = 16;
     
+    private static ExecutorService executor = null;
     private static CloseableHttpClient httpclient;
     
     private final String _apiKey;
     private final String _apiRoot;
-    private int _numThreads = 1;
+    private int _numThreads;
     
     /**
-     * <P>This constructor creates a WealthEngine object with which
-     * you may interact with the API. It assumes you want the Wealth Engine
-     * production environment 
-     *
-     * @param apiKey
-     */
+    * <P>This constructor creates a WealthEngine object with which
+    * you may interact with the API. It assumes you want the Wealth Engine
+    * production environment 
+    *
+    * @param apiKey
+    */
     public WealthEngine(String apiKey) {
         this(apiKey,PROD_URL);
     }
@@ -60,15 +62,32 @@ public class WealthEngine {
      * <P>This constructor creates a WealthEngine object with which
      * you may interact with the API. You can use the second argument
      * to tell it which environment to connect to using the constants
-     * SANDBOX_URL or PROD_URL
-     *
+     * SANDBOX_URL or PROD_URL. 
+     * 
      * @param apiKey
      * @param environmentUrl
      */
     public WealthEngine(String apiKey, String environmentUrl) {
+        this(apiKey,environmentUrl,DEFAULT_THREADS);
+    }
+    
+    /**
+    * <P>This constructor creates a WealthEngine object with which
+    * you may interact with the API. You can use the second argument
+    * to tell it which environment to connect to using the constants
+    * SANDBOX_URL or PROD_URL. The third parameter defines the number of threads
+    * available to the thread executor 
+    *
+    * @param apiKey
+    * @param environmentUrl
+    * @param numThreads
+    */
+    public WealthEngine(String apiKey, String environmentUrl, int numThreads) {
         _apiKey = apiKey;
         _apiRoot = environmentUrl; 
         httpclient = HttpClients.createDefault();
+        _numThreads = numThreads;
+        initExecutor();
     }
     
     public void setClient(CloseableHttpClient client) {
@@ -87,13 +106,20 @@ public class WealthEngine {
     }
     
     /**
-     * <P>Gets the number of threads the ExecutorService is using to process API requests
-     *    
-
-     * @returns the number of threads the ExecutorService is using to process API requests
-     */
+    * <P>Gets the number of threads the ExecutorService is using to process API requests
+    *    
+    * @returns the number of threads the ExecutorService is using to process API requests
+    */
     public int getThreadPoolSize() {
         return _numThreads;
+    }
+    
+    /**
+     * <P> Sets up the underlying executor thread pool
+     *
+     */
+    public void initExecutor() {
+        executor = Executors.newFixedThreadPool(_numThreads);
     }
     
     /**
@@ -192,7 +218,7 @@ public class WealthEngine {
         
         if(!request.validate()) throw new ApiRequest.MalformedRequestException("The request has missing or invalid properties");
        
-        ExecutorService executor = Executors.newFixedThreadPool(_numThreads);
+        
         Callable<MatchResponse> task = () -> {
             
             ObjectMapper mapper = new ObjectMapper();

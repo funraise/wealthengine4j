@@ -70,7 +70,7 @@ public class BasicProfileMatch extends ProfileMatch {
         public TotalValue total_realestate_value;
     }
 
-    public int id;
+    public Long id;
     public Identity identity;
     public Wealth wealth;
     public Giving giving;
