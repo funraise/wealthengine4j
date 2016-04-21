@@ -1,6 +1,7 @@
 package io.funraise.api;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,12 +41,12 @@ public class WealthEngine {
     public static final String SANDBOX_URL = "https://api-sandbox.wealthengine.com/v1/";
     public static final int DEFAULT_THREADS = 16;
     
-    private static ExecutorService executor = null;
+    private static ExecutorService executor = Executors.newFixedThreadPool(DEFAULT_THREADS);
     private static CloseableHttpClient httpclient;
     
     private final String _apiKey;
     private final String _apiRoot;
-    private int _numThreads;
+    private static int _numThreads;
     
     /**
     * <P>This constructor creates a WealthEngine object with which
@@ -59,19 +60,6 @@ public class WealthEngine {
     }
     
     /**
-     * <P>This constructor creates a WealthEngine object with which
-     * you may interact with the API. You can use the second argument
-     * to tell it which environment to connect to using the constants
-     * SANDBOX_URL or PROD_URL. 
-     * 
-     * @param apiKey
-     * @param environmentUrl
-     */
-    public WealthEngine(String apiKey, String environmentUrl) {
-        this(apiKey,environmentUrl,DEFAULT_THREADS);
-    }
-    
-    /**
     * <P>This constructor creates a WealthEngine object with which
     * you may interact with the API. You can use the second argument
     * to tell it which environment to connect to using the constants
@@ -80,14 +68,11 @@ public class WealthEngine {
     *
     * @param apiKey
     * @param environmentUrl
-    * @param numThreads
     */
-    public WealthEngine(String apiKey, String environmentUrl, int numThreads) {
+    public WealthEngine(String apiKey, String environmentUrl) {
         _apiKey = apiKey;
         _apiRoot = environmentUrl; 
         httpclient = HttpClients.createDefault();
-        _numThreads = numThreads;
-        initExecutor();
     }
     
     public void setClient(CloseableHttpClient client) {
@@ -101,8 +86,18 @@ public class WealthEngine {
      *
      * @param size
      */
-    public void setThreadPoolSize(int size) {
+    public static void setThreadPoolSize(int size) {
         _numThreads = size;
+        initExecutor(_numThreads);
+    }
+    
+    //sets up a new executor thread pool and resubmits any
+    //tasks that were remainder
+    private static void initExecutor(int numThreads) {
+        List<Runnable> rejected = null;
+        if(executor != null) rejected = executor.shutdownNow();
+        executor = Executors.newFixedThreadPool(numThreads);
+        if(rejected != null) rejected.forEach(executor::submit);
     }
     
     /**
@@ -110,18 +105,10 @@ public class WealthEngine {
     *    
     * @returns the number of threads the ExecutorService is using to process API requests
     */
-    public int getThreadPoolSize() {
+    public static int getThreadPoolSize() {
         return _numThreads;
     }
-    
-    /**
-     * <P> Sets up the underlying executor thread pool
-     *
-     */
-    public void initExecutor() {
-        executor = Executors.newFixedThreadPool(_numThreads);
-    }
-    
+     
     /**
      * <P>Calling this method with an EmailMatchRequest object tries to return a BasicProfileMatch by first name, last name + email
      * 
