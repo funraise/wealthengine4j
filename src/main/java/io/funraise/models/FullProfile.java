@@ -2,9 +2,9 @@ package io.funraise.models;
 
 import java.util.List;
 
-public class FullProfileMatch extends BasicProfileMatch {
+public class FullProfile extends BasicProfile {
     
-     public static class Identity extends BasicProfileMatch.Identity{
+     public static class Identity extends BasicProfile.Identity{
         
         public static class MaritalStatus {
             public String value;
@@ -34,7 +34,7 @@ public class FullProfileMatch extends BasicProfileMatch {
         public Spouse spouse;
     }
     
-    public static class Wealth extends BasicProfileMatch.Wealth {
+    public static class Wealth extends BasicProfile.Wealth {
         
         public static class CashOnHand extends MinMax {}
         
@@ -60,7 +60,7 @@ public class FullProfileMatch extends BasicProfileMatch {
         public BusinessOwnership business_ownership;
     }
     
-    public static class Giving extends BasicProfileMatch.Giving {
+    public static class Giving extends BasicProfile.Giving {
         public static class AffiliationInclination {
             public String text;
             public String value;
@@ -86,7 +86,7 @@ public class FullProfileMatch extends BasicProfileMatch {
         public TotalPoliticalDonations total_political_donations;
     }
     
-    public static class Locations extends BasicProfileMatch.Locations {
+    public static class Locations extends BasicProfile.Locations {
         public String personal_phone;
     }
     

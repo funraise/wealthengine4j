@@ -1,4 +1,3 @@
-package io.funraise.test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

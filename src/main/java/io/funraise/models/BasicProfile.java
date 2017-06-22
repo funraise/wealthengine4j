@@ -2,7 +2,7 @@ package io.funraise.models;
 
 import java.util.List;
 
-public class BasicProfileMatch extends ProfileMatch {
+public class BasicProfile {
     
     public static class Identity {
         

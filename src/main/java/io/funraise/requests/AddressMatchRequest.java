@@ -1,4 +1,4 @@
-package io.funraise.models;
+package io.funraise.requests;
 
 public class AddressMatchRequest extends MatchRequest {
     
@@ -7,9 +7,9 @@ public class AddressMatchRequest extends MatchRequest {
     public String state;
     public String zip;
   
-    public boolean validate() {
+    public boolean isValid() {
     
-        return super.validate() &&
+        return super.isValid() &&
                notEmpty(address_line1) &&
                notEmpty(state) &&
                notEmpty(city) &&

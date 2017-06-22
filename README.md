@@ -13,18 +13,15 @@ A Java based wrapper for the Wealth Engine API: https://dev.wealthengine.com/api
     try {
  
         WealthEngine we = new WealthEngine("<Your API Key>");
+
         EmailMatchRequest emailRequest = new EmailMatchRequest();
         emailRequest.email = "someone@somewhere.com";
         emailRequest.first_name = "Joe";
         emailRequest.last_name = "Smith";
-        Future<MatchResponse> futurebm = we.getBasicProfileByEmail(emailRequest);
-         
-        //You can of course do anything you want with Future<MatchResponse>
-        MatchResponse response = futurebm.get();
-        BasicProfileMatch basic = (BasicProfileMatch) response.profileMatch;
-        
+
+        BasicProfile basic = we.getBasicProfileByEmail(emailRequest);
         String p2gscore = basic.profileMatch.giving.p2g_score.text;
    }
-   catch(ApiRequest.MalformedRequestException | ExecutionException | InterruptedException e) {e.printStackTrace();}
+   catch(WealthEngineException e) {e.printStackTrace();}
 
 ```
