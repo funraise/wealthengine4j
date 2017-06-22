@@ -4,8 +4,8 @@ A Java based wrapper for the Wealth Engine API: https://dev.wealthengine.com/api
 
 ## DEPENDENCIES
 
- + Apache HTTPClient
- + Jackson Core, Databind and Annotations
+ + Retrofit2
+ + Retrofit2 Jackson Converters
   
 
 ```java
