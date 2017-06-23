@@ -1,4 +1,4 @@
-# wealthengine4j: A Wealth Engine Java SDK by [Funraise](https://funraise.io)
+# wealthengine4j: A Wealth Engine Java SDK made with love by [Funraise](https://funraise.io)
 
 <p align="center">
 <img src="https://funraise.io/wp-content/uploads/2016/12/funny_green.png" width="200">
@@ -13,18 +13,17 @@
 
 ## What is [Wealth Engine](http://www.wealthengine.com/products-services/products/screen)?
 
-Wealth Engine profiles are proprietary wealth ratings and scores.
-Ratings and scores, are developed leveraging wealth intelligence and provides deeper insight into a potential prospect.
-
-WealthEngine’s ratings and scores give you insight on
-your prospects, so you can build effective marketing and
-business development strategies. This insight is useful to not only identify
+Wealth Engine profiles are proprietary wealth ratings and scores leveraging wealth intelligence
+which provides deeper insight into a potential prospect. These profiles allow you to build marketing
+and business development strategies. This insight is useful to not only identify
 your best customers, but to uncover those individuals who may show
 potential for additional business.
 
 Wealth Engine profiles contain information on an individual’s net worth, income, assets,
 real estate, stock holding, charitable contributions and other financial
 related data as well as business and personal contact information.
+
+Funraise uses this library to derive key metrics for Donors in their SaaS Non-Profit Fundraising Platform.
 
 Some key indicators include:
 
@@ -51,7 +50,7 @@ Some key indicators include:
  + Retrofit2 Jackson Converters
 
 
- ## Example
+ ## Example Usage
 
 ```java
 
@@ -62,8 +61,7 @@ Some key indicators include:
     emailRequest.first_name = "Joe";
     emailRequest.last_name = "Smith";
 
-    BasicProfile basic = we.getBasicProfileByEmail(emailRequest);
+    BasicProfile basic = we.getBasicProfile(emailRequest);
     String p2gscore = basic.profileMatch.giving.p2g_score.text;
-
 
 ```
