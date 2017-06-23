@@ -80,7 +80,6 @@ public class WealthEngine {
         service = retrofit.create(WealthEngineService.class);
     }
 
-
     /**
      * <P>Calling this method with an EmailMatchRequest object tries to return a BasicProfile by first name, last name + email
      *
@@ -90,10 +89,10 @@ public class WealthEngine {
      * @param request a EmailMatchRequest object
      * @return BasicProfile
      */
-    public BasicProfile getBasicProfileByEmail(EmailMatchRequest request) throws WealthEngineException {
+    public BasicProfile getBasicProfile(EmailMatchRequest request) throws WealthEngineException {
         try {
             if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getBasicProfileByEmail(request).execute().body();
+            return service.getBasicProfile(request).execute().body();
         }
         catch(IOException e) {
             throw new WealthEngineException("Failed to connect to API",e);
@@ -110,10 +109,10 @@ public class WealthEngine {
      * @return BasicProfile
      *
      */
-    public BasicProfile getBasicProfileByPhone(PhoneMatchRequest request) throws WealthEngineException {
+    public BasicProfile getBasicProfile(PhoneMatchRequest request) throws WealthEngineException {
         try {
             if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getBasicProfileByPhone(request).execute().body();
+            return service.getBasicProfile(request).execute().body();
         }
         catch (IOException e) {
             throw new WealthEngineException("Failed to connect to API",e);
@@ -132,17 +131,15 @@ public class WealthEngine {
      * @return BasicProfile
      *
      */
-    public BasicProfile getBasicProfileByAddress(AddressMatchRequest request) throws WealthEngineException {
+    public BasicProfile getBasicProfile(AddressMatchRequest request) throws WealthEngineException {
         try {
             if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getBasicProfileByAddress(request).execute().body();
+            return service.getBasicProfile(request).execute().body();
         }
         catch (IOException e) {
             throw new WealthEngineException("Failed to connect to API",e);
         }
     }
-
-
 
     /**
      * <P>Calling this method with an EmailMatchRequest object tries to return a FullProfile by first name, last name + email
@@ -153,16 +150,15 @@ public class WealthEngine {
      * @param request a EmailMatchRequest object
      * @return FullProfile
      */
-    public FullProfile getFullProfileByEmail(EmailMatchRequest request) throws WealthEngineException {
+    public FullProfile getFullProfile(EmailMatchRequest request) throws WealthEngineException {
         try {
             if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getFullProfileByEmail(request).execute().body();
+            return service.getFullProfile(request).execute().body();
         }
         catch(IOException e) {
             throw new WealthEngineException("Failed to connect to API",e);
         }
     }
-
 
     /**
      * <P>Calling this method with an PhoneMatchRequest object tries to return a FullProfile by first name, last name + phone
@@ -174,16 +170,15 @@ public class WealthEngine {
      * @return FullProfile
      *
      */
-    public FullProfile getFullProfileByPhone(PhoneMatchRequest request) throws WealthEngineException {
+    public FullProfile getFullProfile(PhoneMatchRequest request) throws WealthEngineException {
         try {
             if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getFullProfileByPhone(request).execute().body();
+            return service.getFullProfile(request).execute().body();
         }
         catch(IOException e) {
             throw new WealthEngineException("Failed to connect to API",e);
         }
     }
-
 
     /**
      * <P>Calling this method with an AddressMatchRequest object tries to return a FullProfile by first name, last name + address
@@ -197,16 +192,13 @@ public class WealthEngine {
      * @return FullProfile
      *
      */
-    public FullProfile getFullProfileByAddress(AddressMatchRequest request) throws WealthEngineException {
+    public FullProfile getFullProfile(AddressMatchRequest request) throws WealthEngineException {
         try {
             if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getFullProfileByAddress(request).execute().body();
+            return service.getFullProfile(request).execute().body();
         }
         catch(IOException e) {
             throw new WealthEngineException("Failed to connect to API",e);
         }
     }
-    
-    
-
 }

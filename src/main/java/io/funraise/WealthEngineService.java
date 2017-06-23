@@ -12,20 +12,20 @@ import retrofit2.http.POST;
 public interface WealthEngineService {
 
     @POST("profile/find_one/by_email/basic")
-    Call<BasicProfile> getBasicProfileByEmail(@Body EmailMatchRequest request);
+    Call<BasicProfile> getBasicProfile(@Body EmailMatchRequest request);
 
     @POST("profile/find_one/by_phone/basic")
-    Call<BasicProfile> getBasicProfileByPhone(@Body PhoneMatchRequest request);
+    Call<BasicProfile> getBasicProfile(@Body PhoneMatchRequest request);
 
     @POST("profile/find_one/by_address/basic")
-    Call<BasicProfile> getBasicProfileByAddress(@Body AddressMatchRequest request);
+    Call<BasicProfile> getBasicProfile(@Body AddressMatchRequest request);
 
     @POST("profile/find_one/by_address/full")
-    Call<FullProfile> getFullProfileByAddress(@Body AddressMatchRequest request);
+    Call<FullProfile> getFullProfile(@Body AddressMatchRequest request);
 
     @POST("profile/find_one/by_phone/full")
-    Call<FullProfile> getFullProfileByPhone(@Body PhoneMatchRequest request);
+    Call<FullProfile> getFullProfile(@Body PhoneMatchRequest request);
 
     @POST("profile/find_one/by_email/full")
-    Call<FullProfile> getFullProfileByEmail(@Body EmailMatchRequest request);
+    Call<FullProfile> getFullProfile(@Body EmailMatchRequest request);
 }

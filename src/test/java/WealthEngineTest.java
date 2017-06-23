@@ -17,13 +17,12 @@ public class WealthEngineTest {
     public void testBasicProfileMatchEmail() throws WealthEngineException, IOException {
 
         WealthEngine we = new WealthEngine("abc123",WealthEngine.SANDBOX_URL, new FakeInterceptor("basic_profile_match.json"));
-        
         EmailMatchRequest request = new EmailMatchRequest();
         request.first_name = "Jason";
         request.last_name = "Swenski";
         request.email = "jason@funraise.io";
-        BasicProfile basic = we.getBasicProfileByEmail(request);
 
+        BasicProfile basic = we.getBasicProfile(request);
         assertTrue(basic != null);
         assertEquals(basic.identity.first_name,"Jason");
         assertEquals(basic.identity.last_name,"Swenski");
@@ -35,7 +34,6 @@ public class WealthEngineTest {
     public void testFullProfileMatchAddress() throws WealthEngineException, IOException {
 
         WealthEngine we = new WealthEngine("abc123",WealthEngine.SANDBOX_URL, new FakeInterceptor("full_profile_match.json"));
-
         AddressMatchRequest request = new AddressMatchRequest();
         request.first_name = "Bill";
         request.last_name = "Gates";
@@ -44,12 +42,11 @@ public class WealthEngineTest {
         request.state = "WA";
         request.zip = "98039";
 
-        FullProfile full = we.getFullProfileByAddress(request);
+        FullProfile full = we.getFullProfile(request);
         assertTrue(full != null);
         assertEquals(full.identity.first_name,"BILL");
         assertEquals(full.identity.last_name,"GATES");
         assertEquals(full.identity.middle_name,"MOCK");
         assertEquals(full.demographics.has_children,false);
-        
     }
 }
