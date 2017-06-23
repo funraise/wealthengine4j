@@ -1,18 +1,278 @@
 {
-   "demographics":{
-      "has_children":false
+   "relationship":{
+      "spouse":{
+         "first_name":"LILLIAN",
+         "full_name":"LILLIAN M DISNEY",
+         "id":2537081,
+         "last_name":"DISNEY",
+         "middle_name":"M"
+      }
+   },
+   "id":8930357,
+   "realestate":{
+      "total_num_properties":1,
+      "total_realestate_value":{
+         "min":1,
+         "max":8,
+         "value":5,
+         "text_low":"$1MM",
+         "text_high":"$2MM",
+         "text":"$1MM-$2MM"
+      }
    },
    "identity":{
-      "first_name":"BILL",
-      "full_name":"BILL GATES",
+      "first_name":"JASON",
+      "middle_name":"E",
+      "last_name":"SWENSKI",
+      "full_name":"JASON SWENSKI",
+      "age":59,
       "gender":{
          "text":"Male",
          "value":"M"
       },
-      "last_name":"GATES",
-      "middle_name":"MOCK"
+      "marital_status":{
+         "text":"Married",
+         "value":"M"
+      },
+      "emails":[
+         {
+            "email":"ceo@email.com"
+         },
+         {
+            "email":"dir@charity.org"
+         }
+      ]
    },
-   "realestate":{
-      "total_num_properties":1
+   "jobs":[
+      {
+         "org_name":"DISNEY WORLD",
+         "org_type":{
+            "text":"Business",
+            "value":"B"
+         },
+         "title":"CEO",
+         "email":"ceo@disney.world",
+         "phone":"1234567890",
+         "address":{
+            "street_line1":"123 Main St",
+            "city":"City",
+            "state":{
+               "text":"State",
+               "value":"ST"
+            },
+            "postal_code":"00000"
+         }
+      },
+      {
+         "org_name":"DISNEY INVESTMENTS LLC",
+         "org_type":{
+            "text":"Business",
+            "value":"B"
+         },
+         "title":"Board of Directors",
+         "phone":"1234567890",
+         "email":"dir@disney.inv",
+         "address":{
+            "street_line1":"123 Main St",
+            "city":"City",
+            "state":{
+               "text":"State",
+               "value":"ST"
+            },
+            "postal_code":"00000"
+         }
+      }
+   ],
+   "locations":[
+      {
+         "address":{
+            "street_line1":"1313 Disneyland Dr",
+            "street_line2":"Apt 1",
+            "city":"ANAHEIM",
+            "postal_code":"92802",
+            "state":{
+               "text":"California",
+               "value":"CA"
+            }
+         },
+         "personal_phone":"1234567890"
+      }
+   ],
+   "wealth":{
+      "accredited_investor":true,
+      "influence_rating":{
+         "text":"Top Quartile",
+         "value":"1"
+      },
+      "networth":{
+         "min":1,
+         "max":12,
+         "value":12,
+         "text_low":"$500MM+",
+         "text_high":"$500MM+",
+         "text":"$500MM+"
+      },
+      "total_income":{
+         "min":1,
+         "max":5,
+         "value":1,
+         "text_low":"$1",
+         "text_high":"$50K",
+         "text":"$1-$50K"
+      },
+      "business_ownership":{
+         "min":1,
+         "text":"$10MM-$25MM",
+         "max":8,
+         "text_low":"$10MM",
+         "value":5,
+         "text_high":"$25MM"
+      },
+      "business_sales_volume":{
+         "min":1,
+         "text":"$100MM+",
+         "max":8,
+         "text_low":"$100MM+",
+         "value":8,
+         "text_high":"$100MM+"
+      },
+      "cash_on_hand":{
+         "min":1,
+         "text":"<$10K",
+         "max":4,
+         "text_low":"$0",
+         "value":1,
+         "text_high":"$10K"
+      },
+      "investable_assets":{
+         "min":1,
+         "text":"$100K-$500K",
+         "max":12,
+         "text_low":"$100K",
+         "value":4,
+         "text_high":"$500K"
+      },
+      "total_assets":{
+         "min":1,
+         "text":"$100K-$500K",
+         "max":12,
+         "text_low":"$100K",
+         "value":4,
+         "text_high":"$500K"
+      },
+      "total_stock":{
+         "min":1,
+         "text":"$1MM-$5MM",
+         "max":8,
+         "text_low":"$1MM",
+         "value":3,
+         "text_high":"$5MM"
+      },
+      "stock_holdings_direct":{
+         "min":1,
+         "text":"$500K-$1MM",
+         "max":8,
+         "text_low":"$500K",
+         "value":2,
+         "text_high":"$1MM"
+      },
+      "stock_holdings_indirect":{
+         "min":1,
+         "text":"$500K-$1MM",
+         "max":8,
+         "text_low":"$500K",
+         "value":2,
+         "text_high":"$1MM"
+      },
+      "total_pensions":{
+         "min":1,
+         "text":"$1-$250K",
+         "max":8,
+         "text_low":"$1",
+         "value":1,
+         "text_high":"$250K"
+      }
+   },
+   "demographics":{
+      "has_children":true
+   },
+   "vehicles":{
+      "ownership":[
+         {
+            "text":"Boat Owner",
+            "value":"857"
+         },
+         {
+            "text":"Plane Owner",
+            "value":"856"
+         }
+      ]
+   },
+   "giving":{
+      "affiliation_inclination":{
+         "text":"Older without Political Support",
+         "value":"4"
+      },
+      "planned_giving":[
+         {
+            "value":"84",
+            "text":"Very Likely to Grant Annuity"
+         },
+         {
+            "value":"85",
+            "text":"Likely to Bequest"
+         },
+         {
+            "value":"86",
+            "text":"Likely to Create Trust"
+         }
+      ],
+      "charitable_donations":{
+         "min":1,
+         "text":"$1K-$1.25K",
+         "max":14,
+         "text_low":"$1K",
+         "value":5,
+         "text_high":"$1.25K"
+      },
+      "total_political_donations":{
+         "min":1,
+         "text":"$50-$100",
+         "max":16,
+         "text_low":"$50",
+         "value":3,
+         "text_high":"$100"
+      },
+      "total_donations":{
+         "min":1,
+         "text":"$1MM+",
+         "max":16,
+         "text_low":"$1MM+",
+         "value":16,
+         "text_high":"$1MM+"
+      },
+      "estimated_annual_donations":{
+         "min":1,
+         "text":"$1K-$5K",
+         "max":7,
+         "text_low":"$1K",
+         "value":2,
+         "text_high":"$5K"
+      },
+      "gift_capacity":{
+         "min":1,
+         "text":"$30K-$40K",
+         "max":20,
+         "text_low":"$30K",
+         "value":11,
+         "text_high":"$40K"
+      },
+      "p2g_score":{
+         "text":"3|5 - Average",
+         "value":"35"
+      }
+   },
+   "professional":{
+      "board_member":true
    }
 }

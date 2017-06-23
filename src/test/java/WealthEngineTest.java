@@ -24,10 +24,10 @@ public class WealthEngineTest {
 
         BasicProfile basic = we.getBasicProfile(request);
         assertTrue(basic != null);
-        assertEquals(basic.identity.first_name,"Jason");
-        assertEquals(basic.identity.last_name,"Swenski");
-        assertEquals(basic.identity.middle_name,"Mock");
-        assertEquals(basic.giving.p2g_score.value,"35");
+        assertEquals(basic.identity.first_name,"JASON");
+        assertEquals(basic.identity.last_name,"SWENSKI");
+        assertEquals(basic.identity.middle_name,"E");
+        assertEquals(basic.giving.p2g_score.value,"10");
     }
     
     @Test
@@ -44,9 +44,9 @@ public class WealthEngineTest {
 
         FullProfile full = we.getFullProfile(request);
         assertTrue(full != null);
-        assertEquals(full.identity.first_name,"BILL");
-        assertEquals(full.identity.last_name,"GATES");
-        assertEquals(full.identity.middle_name,"MOCK");
-        assertEquals(full.demographics.has_children,false);
+        assertEquals(full.identity.first_name,"JASON");
+        assertEquals(full.identity.last_name,"SWENSKI");
+        assertEquals(full.identity.middle_name,"E");
+        assertEquals(full.demographics.has_children,true);
     }
 }

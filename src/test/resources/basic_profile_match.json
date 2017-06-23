@@ -1,80 +1,80 @@
 {
-   "giving":{
-      "estimated_annual_donations":{
-         "min":1,
-         "text":"$1K-$5K",
-         "max":7,
-         "text_low":"$1K",
-         "value":2,
-         "text_high":"$5K"
-      },
-      "gift_capacity":{
-         "min":1,
-         "text":"$15K-$20K",
-         "max":20,
-         "text_low":"$15K",
-         "value":8,
-         "text_high":"$20K"
-      },
-      "p2g_score":{
-         "text":"3|5 - Average",
-         "value":"35"
-      }
-   },
-   "id":7039944,
-   "identity":{
-      "age":36,
-      "first_name":"Jason",
-      "full_name":"Jason Swenski",
-      "gender":{
-         "text":"Male",
-         "value":"M"
-      },
-      "last_name":"Swenski",
-      "middle_name":"Mock"
-   },
-   "locations":[
-      {
-         "address":{
-            "city":"ALBANY",
-            "postal_code":"97322",
-            "state":{
-               "text":"Oregon",
-               "value":"OR"
-            },
-            "street_line1":"1905 WAVERLY DR SE",
-            "street_line2":"4"
-         }
-      }
-   ],
+   "id":9131917,
    "realestate":{
       "total_num_properties":1,
       "total_realestate_value":{
          "min":1,
-         "text":"$1-$250K",
          "max":8,
-         "text_low":"$1",
-         "value":1,
-         "text_high":"$250K"
+         "value":5,
+         "text_low":"$1MM",
+         "text_high":"$2MM",
+         "text":"$1MM-$2MM"
       }
    },
+   "identity":{
+      "first_name":"JASON",
+      "middle_name":"E",
+      "last_name":"SWENSKI",
+      "full_name":"JASON SWENSKI",
+      "age":59,
+      "gender":{
+         "text":"Male",
+         "value":"M"
+      }
+   },
+   "locations":[
+      {
+         "address":{
+            "street_line1":"1313 Disneyland Dr",
+            "street_line2":"Apt 1",
+            "city":"ANAHEIM",
+            "postal_code":"92802",
+            "state":{
+               "text":"California",
+               "value":"CA"
+            }
+         }
+      }
+   ],
    "wealth":{
-      "accredited_investor":false,
+      "accredited_investor":true,
       "networth":{
          "min":1,
-         "text":"$100K-$500K",
          "max":12,
-         "text_low":"$100K",
-         "value":4,
-         "text_high":"$500K"
+         "value":12,
+         "text_low":"$500MM+",
+         "text_high":"$500MM+",
+         "text":"$500MM+"
       },
       "total_income":{
          "min":1,
-         "text":"$50K-$100K",
          "max":5,
-         "text_low":"$50K",
-         "value":2,
-         "text_high":"$100K"
+         "value":1,
+         "text_low":"$1",
+         "text_high":"$50K",
+         "text":"$1-$50K"
+      }
+   },
+   "giving":{
+      "estimated_annual_donations":{
+         "min":1,
+         "max":7,
+         "value":7,
+         "text_low":"$100K+",
+         "text_high":"$100K+",
+         "text":"$100K+"
+      },
+      "gift_capacity":{
+         "min":1,
+         "max":20,
+         "value":20,
+         "text_low":"$5MM+",
+         "text_high":"$5MM+",
+         "text":"$5MM+"
+      },
+      "p2g_score":{
+         "value":"10",
+         "text":"1|0 - Excellent"
       }
    }
 }

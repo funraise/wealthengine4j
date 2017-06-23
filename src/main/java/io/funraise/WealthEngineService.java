@@ -20,12 +20,13 @@ public interface WealthEngineService {
     @POST("profile/find_one/by_address/basic")
     Call<BasicProfile> getBasicProfile(@Body AddressMatchRequest request);
 
-    @POST("profile/find_one/by_address/full")
-    Call<FullProfile> getFullProfile(@Body AddressMatchRequest request);
+
+    @POST("profile/find_one/by_email/full")
+    Call<FullProfile> getFullProfile(@Body EmailMatchRequest request);
 
     @POST("profile/find_one/by_phone/full")
     Call<FullProfile> getFullProfile(@Body PhoneMatchRequest request);
 
-    @POST("profile/find_one/by_email/full")
-    Call<FullProfile> getFullProfile(@Body EmailMatchRequest request);
+    @POST("profile/find_one/by_address/full")
+    Call<FullProfile> getFullProfile(@Body AddressMatchRequest request);
 }

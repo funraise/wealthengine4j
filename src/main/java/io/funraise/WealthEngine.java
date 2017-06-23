@@ -10,6 +10,7 @@ import io.funraise.requests.PhoneMatchRequest;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
@@ -27,7 +28,6 @@ public class WealthEngine {
     public static final String PROD_URL = "https://api.wealthengine.com/v1/";
     public static final String SANDBOX_URL = "https://api-sandbox.wealthengine.com/v1/";
 
-    private String _apiKey;
     private WealthEngineService service;
     
     /**
@@ -52,7 +52,6 @@ public class WealthEngine {
     * @param environmentUrl the PROD/SANDBOX URL for WealthEngine
     */
     public WealthEngine(String apiKey, String environmentUrl, Interceptor interceptor) {
-        _apiKey = apiKey;
 
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
         builder.readTimeout(30, TimeUnit.SECONDS);
@@ -61,9 +60,10 @@ public class WealthEngine {
         if(interceptor != null) {
             builder.interceptors().add(interceptor);
         }
+
         builder.addInterceptor(chain -> {
             Request request = chain.request().newBuilder()
-                    .addHeader("APIKey", _apiKey)
+                    .addHeader("Authorization", "APIKey " + apiKey)
                     .addHeader("Content-Type","application/json")
                     .build();
             return chain.proceed(request);
