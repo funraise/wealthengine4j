@@ -12,18 +12,20 @@ import static java.nio.file.Paths.get;
 /**
  * Created by jason on 6/22/17.
  */
-public class FakeInterceptor implements Interceptor {
+public class FakeSuccessInterceptor implements Interceptor {
 
     private String responseString = "";
+    private int code;
 
-    public FakeInterceptor(String responseResource) throws IOException {
-        responseString = new String(readAllBytes(get(getClass().getResource(responseResource).getFile())));
+    public FakeSuccessInterceptor(String responseResource, int code) throws IOException {
+        this.responseString = new String(readAllBytes(get(getClass().getResource(responseResource).getFile())));
+        this.code = code;
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
             return new Response.Builder()
-                    .code(200)
+                    .code(code)
                     .message(responseString)
                     .request(chain.request())
                     .protocol(Protocol.HTTP_1_0)

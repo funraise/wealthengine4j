@@ -1,16 +1,18 @@
 package io.funraise;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import io.funraise.requests.AddressMatchRequest;
 import io.funraise.models.BasicProfile;
 import io.funraise.requests.EmailMatchRequest;
 import io.funraise.models.FullProfile;
 import io.funraise.requests.PhoneMatchRequest;
+import io.funraise.requests.callbacks.BasicProfileCallback;
+import io.funraise.requests.callbacks.FullProfileCallback;
+import io.funraise.requests.callbacks.ProfileCallbackDelegate;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
@@ -28,7 +30,7 @@ public class WealthEngine {
     public static final String PROD_URL = "https://api.wealthengine.com/v1/";
     public static final String SANDBOX_URL = "https://api-sandbox.wealthengine.com/v1/";
 
-    private WealthEngineService service;
+    private final WealthEngineService service;
     
     /**
     * <P>This constructor creates a WealthEngine object with which
@@ -89,14 +91,11 @@ public class WealthEngine {
      * @param request a EmailMatchRequest object
      * @return BasicProfile
      */
-    public BasicProfile getBasicProfile(EmailMatchRequest request) throws WealthEngineException {
-        try {
-            if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getBasicProfile(request).execute().body();
-        }
-        catch(IOException e) {
-            throw new WealthEngineException("Failed to connect to API",e);
-        }
+    public void getBasicProfile(EmailMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
+
+        if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
+        Call<BasicProfile> call = service.getBasicProfile(request);
+        call.enqueue(new BasicProfileCallback(delegate));
     }
 
     /**
@@ -109,14 +108,11 @@ public class WealthEngine {
      * @return BasicProfile
      *
      */
-    public BasicProfile getBasicProfile(PhoneMatchRequest request) throws WealthEngineException {
-        try {
-            if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getBasicProfile(request).execute().body();
-        }
-        catch (IOException e) {
-            throw new WealthEngineException("Failed to connect to API",e);
-        }
+    public void getBasicProfile(PhoneMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
+
+        if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
+        Call<BasicProfile> call = service.getBasicProfile(request);
+        call.enqueue(new BasicProfileCallback(delegate));
     }
 
     /**
@@ -131,14 +127,11 @@ public class WealthEngine {
      * @return BasicProfile
      *
      */
-    public BasicProfile getBasicProfile(AddressMatchRequest request) throws WealthEngineException {
-        try {
-            if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getBasicProfile(request).execute().body();
-        }
-        catch (IOException e) {
-            throw new WealthEngineException("Failed to connect to API",e);
-        }
+    public void getBasicProfile(AddressMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
+
+        if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
+        Call<BasicProfile> call = service.getBasicProfile(request);
+        call.enqueue(new BasicProfileCallback(delegate));
     }
 
     /**
@@ -150,14 +143,11 @@ public class WealthEngine {
      * @param request a EmailMatchRequest object
      * @return FullProfile
      */
-    public FullProfile getFullProfile(EmailMatchRequest request) throws WealthEngineException {
-        try {
-            if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getFullProfile(request).execute().body();
-        }
-        catch(IOException e) {
-            throw new WealthEngineException("Failed to connect to API",e);
-        }
+    public void getFullProfile(EmailMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
+
+        if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
+        Call<FullProfile> call = service.getFullProfile(request);
+        call.enqueue(new FullProfileCallback(delegate));
     }
 
     /**
@@ -170,14 +160,11 @@ public class WealthEngine {
      * @return FullProfile
      *
      */
-    public FullProfile getFullProfile(PhoneMatchRequest request) throws WealthEngineException {
-        try {
-            if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getFullProfile(request).execute().body();
-        }
-        catch(IOException e) {
-            throw new WealthEngineException("Failed to connect to API",e);
-        }
+    public void getFullProfile(PhoneMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
+
+        if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
+        Call<FullProfile> call = service.getFullProfile(request);
+        call.enqueue(new FullProfileCallback(delegate));
     }
 
     /**
@@ -192,13 +179,10 @@ public class WealthEngine {
      * @return FullProfile
      *
      */
-    public FullProfile getFullProfile(AddressMatchRequest request) throws WealthEngineException {
-        try {
-            if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
-            return service.getFullProfile(request).execute().body();
-        }
-        catch(IOException e) {
-            throw new WealthEngineException("Failed to connect to API",e);
-        }
+    public void getFullProfile(AddressMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
+
+        if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
+        Call<FullProfile> call = service.getFullProfile(request);
+        call.enqueue(new FullProfileCallback(delegate));
     }
 }

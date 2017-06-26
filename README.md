@@ -56,12 +56,13 @@ Some key indicators include:
 
     WealthEngine we = new WealthEngine("<Your API Key>");
 
-    EmailMatchRequest emailRequest = new EmailMatchRequest();
-    emailRequest.email = "someone@somewhere.com";
-    emailRequest.first_name = "Joe";
-    emailRequest.last_name = "Smith";
+    EmailMatchRequest request = new EmailMatchRequest();
+    request.email = "someone@somewhere.com";
+    request.first_name = "Joe";
+    request.last_name = "Smith";
 
-    BasicProfile basic = we.getBasicProfile(emailRequest);
-    String p2gscore = basic.profileMatch.giving.p2g_score.text;
+    we.getBasicProfile(request, response -> {
+        String p2gscore = basic.profileMatch.giving.p2g_score.text;
+    });
 
 ```
