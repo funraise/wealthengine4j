@@ -31,11 +31,10 @@ public class WealthEngine {
     public static final String SANDBOX_URL = "https://api-sandbox.wealthengine.com/v1/";
 
     private final WealthEngineService service;
-    
-    /**
+
+   /**
     * <P>This constructor creates a WealthEngine object with which
-    * you may interact with the API. It assumes you want the Wealth Engine
-    * production environment 
+    * you may interact with the API.
     *
     * @param apiKey
     */
@@ -43,15 +42,16 @@ public class WealthEngine {
         this(apiKey,PROD_URL,null);
     }
     
-    /**
+   /**
     * <P>This constructor creates a WealthEngine object with which
     * you may interact with the API. You can use the second argument
     * to tell it which environment to connect to using the constants
-    * SANDBOX_URL or PROD_URL. The third parameter defines the number of threads
-    * available to the thread executor 
+    * SANDBOX_URL or PROD_URL.
     *
     * @param apiKey your WealthEngine API key
     * @param environmentUrl the PROD/SANDBOX URL for WealthEngine
+    * @param interceptor an Interceptor which is attached to the underlying
+    *                    OkHttp client which can be used to modify/mock responses
     */
     public WealthEngine(String apiKey, String environmentUrl, Interceptor interceptor) {
 
@@ -85,11 +85,9 @@ public class WealthEngine {
     /**
      * <P>Calling this method with an EmailMatchRequest object tries to return a BasicProfile by first name, last name + email
      *
-     * <P>BasicProfile is returned immediately to the caller
-     *
-     * @throws WealthEngineException if the request fails or if the request is malformed
+     * @throws WealthEngineException if the request is malformed
      * @param request a EmailMatchRequest object
-     * @return BasicProfile
+     * @param delegate a ProfileCallbackDelegate which accepts the response
      */
     public void getBasicProfile(EmailMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
 
@@ -101,12 +99,9 @@ public class WealthEngine {
     /**
      * <P>Calling this method with an PhoneMatchRequest object tries to return a BasicProfile by first name, last name + phone
      *
-     * <P>BasicProfile is returned immediately to the caller
-     *
-     * @throws WealthEngineException if the request fails or if the request is malformed
+     * @throws WealthEngineException if the request is malformed
      * @param request a PhoneMatchRequest object
-     * @return BasicProfile
-     *
+     * @param delegate a ProfileCallbackDelegate which accepts the response
      */
     public void getBasicProfile(PhoneMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
 
@@ -120,12 +115,9 @@ public class WealthEngine {
      *    Only US addresses/zipcodes are valid here. In general WealthEngines API only returns info on
      *    USA persons
      *
-     * <P>BasicProfile is returned immediately to the caller
-     *
      * @throws WealthEngineException if the request fails or if the request is malformed
      * @param request a AddressMatchRequest object
-     * @return BasicProfile
-     *
+     * @param delegate a ProfileCallbackDelegate which accepts the response
      */
     public void getBasicProfile(AddressMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
 
@@ -137,11 +129,9 @@ public class WealthEngine {
     /**
      * <P>Calling this method with an EmailMatchRequest object tries to return a FullProfile by first name, last name + email
      *
-     * <P>FullProfile is returned immediately to the caller
-     *
      * @throws WealthEngineException if the request fails or if the request is malformed
      * @param request a EmailMatchRequest object
-     * @return FullProfile
+     * @param delegate a ProfileCallbackDelegate which accepts the response
      */
     public void getFullProfile(EmailMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
 
@@ -153,12 +143,9 @@ public class WealthEngine {
     /**
      * <P>Calling this method with an PhoneMatchRequest object tries to return a FullProfile by first name, last name + phone
      *
-     * <P>FullProfile is returned immediately to the caller
-     *
      * @throws WealthEngineException if the request fails or if the request is malformed
      * @param request a PhoneMatchRequest object
-     * @return FullProfile
-     *
+     * @param delegate a ProfileCallbackDelegate which accepts the response
      */
     public void getFullProfile(PhoneMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
 
@@ -172,12 +159,9 @@ public class WealthEngine {
      *    Only US addresses/zipcodes are valid here. In general WealthEngines API only returns info on
      *    USA persons
      *
-     * <P>FullProfile is returned immediately to the caller
-     *
      * @throws WealthEngineException if the request fails or if the request is malformed
      * @param request a AddressMatchRequest object
-     * @return FullProfile
-     *
+     * @param delegate a ProfileCallbackDelegate which accepts the response
      */
     public void getFullProfile(AddressMatchRequest request, ProfileCallbackDelegate delegate) throws WealthEngineException {
 
