@@ -2,7 +2,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.funraise.wealthengine4j</groupId>
   <artifactId>wealthengine4j</artifactId>
-  <version>2.0.1</version>
+  <version>2.0.3</version>
+  <packaging>jar</packaging>
   <name>Wealth Engine Java Wrapper</name>
   <description>Wraps the Wealth Engine API with a Java interface</description>
   <url>https://github.com/jmswenski/wealthengine4j</url>
@@ -57,23 +58,27 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.3</version>
-        <extensions>true</extensions>
-        <configuration>
-          <serverId>ossrh</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>true</autoReleaseAfterClose>
-        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
   <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
+    <repository>
+      <id>bintray-jswenski-wealthengine4j</id>
+      <name>jswenski-wealthengine4j</name>
+      <url>https://api.bintray.com/maven/jswenski/wealthengine4j/wealthengine4j/;publish=1</url>
+    </repository>
   </distributionManagement>
   <dependencies>
       <dependency>
