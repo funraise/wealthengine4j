@@ -58,7 +58,7 @@ Some key indicators include:
 <dependency>
   <groupId>io.funraise.wealthengine4j</groupId>
   <artifactId>wealthengine4j</artifactId>
-  <version>2.0.3</version>
+  <version>2.0.4</version>
   <type>pom</type>
 </dependency>
 ```
@@ -68,16 +68,16 @@ Some key indicators include:
 
 ```java
 
-    WealthEngine we = new WealthEngine("<Your API Key>");
+WealthEngine we = new WealthEngine("<Your API Key>");
 
-    EmailMatchRequest request = new EmailMatchRequest();
-    request.email = "someone@somewhere.com";
-    request.first_name = "Joe";
-    request.last_name = "Smith";
+EmailMatchRequest request = new EmailMatchRequest();
+request.email = "someone@somewhere.com";
+request.first_name = "Joe";
+request.last_name = "Smith";
 
-    we.getBasicProfile(request, response -> {
-        String p2gscore = basic.profileMatch.giving.p2g_score.text;
-    });
+we.getBasicProfile(request, response -> {
+    String p2gscore = basic.profileMatch.giving.p2g_score.text;
+});
 
 ```
 
