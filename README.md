@@ -5,6 +5,7 @@
 </p>
 
 <p align="center">
+[ ![Download](https://api.bintray.com/packages/jswenski/wealthengine4j/wealthengine4j/images/download.svg) ](https://bintray.com/jswenski/wealthengine4j/wealthengine4j/_latestVersion)
 <img src="https://img.shields.io/badge/language-java-orange.svg" alt="Language: Java">
 <img src="https://travis-ci.org/jmswenski/wealthengine4j.svg?branch=master" alt="Build">
 <img src="https://img.shields.io/badge/license-Apache-000000.svg" alt="License">
@@ -65,4 +66,15 @@ Some key indicators include:
         String p2gscore = basic.profileMatch.giving.p2g_score.text;
     });
 
+```
+
+ ## Example Usage
+
+```xml
+<dependency>
+  <groupId>io.funraise.wealthengine4j</groupId>
+  <artifactId>wealthengine4j</artifactId>
+  <version>2.0.3</version>
+  <type>pom</type>
+</dependency>
 ```
