@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-[ ![Download](https://api.bintray.com/packages/jswenski/wealthengine4j/wealthengine4j/images/download.svg) ](https://bintray.com/jswenski/wealthengine4j/wealthengine4j/_latestVersion)
+<a href='https://bintray.com/jswenski/wealthengine4j/wealthengine4j/_latestVersion'><img src='https://api.bintray.com/packages/jswenski/wealthengine4j/wealthengine4j/images/download.svg'></a>
 <img src="https://img.shields.io/badge/language-java-orange.svg" alt="Language: Java">
 <img src="https://travis-ci.org/jmswenski/wealthengine4j.svg?branch=master" alt="Build">
 <img src="https://img.shields.io/badge/license-Apache-000000.svg" alt="License">
