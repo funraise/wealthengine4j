@@ -50,6 +50,19 @@ Some key indicators include:
  + Retrofit2
  + Retrofit2 Jackson Converters
 
+ ## Installation
+
+ Binary distributions for wealthengine4j are hosted on [Bintray](https://bintray.com/jswenski/wealthengine4j/wealthengine4j/).
+
+```xml
+<dependency>
+  <groupId>io.funraise.wealthengine4j</groupId>
+  <artifactId>wealthengine4j</artifactId>
+  <version>2.0.3</version>
+  <type>pom</type>
+</dependency>
+```
+
 
  ## Example Usage
 
@@ -68,13 +81,3 @@ Some key indicators include:
 
 ```
 
- ## Example Usage
-
-```xml
-<dependency>
-  <groupId>io.funraise.wealthengine4j</groupId>
-  <artifactId>wealthengine4j</artifactId>
-  <version>2.0.3</version>
-  <type>pom</type>
-</dependency>
-```
