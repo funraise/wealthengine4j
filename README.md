@@ -59,7 +59,7 @@ Some key indicators include:
 <dependency>
   <groupId>io.funraise.wealthengine4j</groupId>
   <artifactId>wealthengine4j</artifactId>
-  <version>2.0.6</version>
+  <version>2.0.7</version>
   <type>pom</type>
 </dependency>
 ```
