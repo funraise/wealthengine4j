@@ -1,6 +1,6 @@
 package io.funraise.requests.callbacks;
 
-import io.funraise.models.ProfileResponse;
+import io.funraise.responses.ProfileResponse;
 
 /**
  * Created by jason on 6/25/17.

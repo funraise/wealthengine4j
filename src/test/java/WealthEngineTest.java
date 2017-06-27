@@ -6,12 +6,10 @@ import java.io.IOException;
 
 import io.funraise.WealthEngine;
 import io.funraise.WealthEngineException;
-import io.funraise.models.ProfileResponse;
 import io.funraise.requests.AddressMatchRequest;
 import io.funraise.models.BasicProfile;
 import io.funraise.requests.EmailMatchRequest;
 import io.funraise.models.FullProfile;
-import io.funraise.requests.callbacks.ProfileCallbackDelegate;
 
 public class WealthEngineTest {
 

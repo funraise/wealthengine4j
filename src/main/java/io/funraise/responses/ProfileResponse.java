@@ -1,4 +1,6 @@
-package io.funraise.models;
+package io.funraise.responses;
+
+import io.funraise.models.BasicProfile;
 
 /**
  * Created by jason on 6/25/17.
