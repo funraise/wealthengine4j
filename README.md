@@ -24,7 +24,8 @@ WealthEngine profiles contain information on an individual’s net worth, income
 real estate, stock holding, charitable contributions and other financial
 related data as well as business and personal contact information.
 
-Funraise uses this library to derive key metrics for Donors in their SaaS Non-Profit Fundraising Platform.
+[Funraise](https://funraise.io) uses this library to derive key metrics for Donors in their
+SaaS Non-Profit Fundraising Platform.
 
 Some key indicators include:
 
@@ -58,7 +59,7 @@ Some key indicators include:
 <dependency>
   <groupId>io.funraise.wealthengine4j</groupId>
   <artifactId>wealthengine4j</artifactId>
-  <version>2.0.4</version>
+  <version>2.0.5</version>
   <type>pom</type>
 </dependency>
 ```
