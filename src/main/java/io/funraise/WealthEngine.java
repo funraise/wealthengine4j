@@ -6,8 +6,7 @@ import io.funraise.models.BasicProfile;
 import io.funraise.requests.EmailMatchRequest;
 import io.funraise.models.FullProfile;
 import io.funraise.requests.PhoneMatchRequest;
-import io.funraise.requests.callbacks.BasicProfileCallback;
-import io.funraise.requests.callbacks.FullProfileCallback;
+import io.funraise.requests.callbacks.ProfileCallback;
 import io.funraise.requests.callbacks.ProfileCallbackDelegate;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -93,7 +92,7 @@ public class WealthEngine {
 
         if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
         Call<BasicProfile> call = service.getBasicProfile(request);
-        call.enqueue(new BasicProfileCallback(delegate));
+        call.enqueue(new ProfileCallback<>(delegate));
     }
 
     /**
@@ -107,7 +106,7 @@ public class WealthEngine {
 
         if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
         Call<BasicProfile> call = service.getBasicProfile(request);
-        call.enqueue(new BasicProfileCallback(delegate));
+        call.enqueue(new ProfileCallback<>(delegate));
     }
 
     /**
@@ -123,7 +122,7 @@ public class WealthEngine {
 
         if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
         Call<BasicProfile> call = service.getBasicProfile(request);
-        call.enqueue(new BasicProfileCallback(delegate));
+        call.enqueue(new ProfileCallback<>(delegate));
     }
 
     /**
@@ -137,7 +136,7 @@ public class WealthEngine {
 
         if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
         Call<FullProfile> call = service.getFullProfile(request);
-        call.enqueue(new FullProfileCallback(delegate));
+        call.enqueue(new ProfileCallback<>(delegate));
     }
 
     /**
@@ -151,7 +150,7 @@ public class WealthEngine {
 
         if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
         Call<FullProfile> call = service.getFullProfile(request);
-        call.enqueue(new FullProfileCallback(delegate));
+        call.enqueue(new ProfileCallback<>(delegate));
     }
 
     /**
@@ -167,6 +166,6 @@ public class WealthEngine {
 
         if(!request.isValid()) throw new WealthEngineException("Request is not properly formatted");
         Call<FullProfile> call = service.getFullProfile(request);
-        call.enqueue(new FullProfileCallback(delegate));
+        call.enqueue(new ProfileCallback<>(delegate));
     }
 }

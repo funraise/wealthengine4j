@@ -9,7 +9,7 @@ import retrofit2.Response;
 /**
  * Created by jason on 6/25/17.
  */
-public abstract class ProfileCallback<T extends BasicProfile> implements Callback<T>  {
+public class ProfileCallback<T extends BasicProfile> implements Callback<T>  {
 
     protected ProfileCallbackDelegate delegate;
     protected ProfileResponse profileResponse = new ProfileResponse();
